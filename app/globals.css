@@ -1,0 +1,215 @@
+@tailwind base;
+
+@custom-variant dark (&:is(.dark *));
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors - Blues */
+    --bltz-navy: 217 82.86% 8%;       /* Very dark navy - almost black */
+    --bltz-blue: 217 91% 60%;         /* Primary electric blue */
+    --bltz-blue-light: 217 91% 70%;   /* Lighter blue */
+    --bltz-blue-dark: 217 91% 45%;    /* Darker blue */
+
+    /* Brand Colors - Gold */
+    --bltz-gold: 45 100% 51%;         /* Electric gold */
+    --bltz-gold-light: 45 100% 65%;   /* Light gold */
+    --bltz-gold-dark: 45 100% 40%;    /* Dark gold */
+
+    /* Neutrals */
+    --bltz-black: 0 0% 8%;            /* Almost black */
+    --bltz-gray-dark: 220 10% 20%;    /* Dark gray */
+    --bltz-gray: 220 10% 50%;         /* Mid gray */
+    --bltz-gray-light: 220 10% 90%;   /* Light gray */
+    --bltz-white: 0 0% 98%;           /* Off white */
+
+    /* Semantic Colors */
+    --bltz-success: 142 71% 45%;      /* Green */
+    --bltz-warning: 38 92% 50%;       /* Orange */
+    --bltz-error: 0 84% 60%;          /* Red */
+
+    --background: 0 0% 100%;
+    --foreground: var(--bltz-black);
+    --card: 0 0% 100%;
+    --card-foreground: var(--bltz-black);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--bltz-black);
+    --primary: var(--bltz-blue);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--bltz-gold);
+    --secondary-foreground: var(--bltz-black);
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: var(--bltz-gold);
+    --accent-foreground: var(--bltz-black);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: var(--bltz-blue);
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode with blues and gold */
+    --background: var(--bltz-black);
+    --foreground: var(--bltz-white);
+    --card: var(--bltz-navy);
+    --card-foreground: var(--bltz-white);
+    --popover: var(--bltz-navy);
+    --popover-foreground: var(--bltz-white);
+    --primary: var(--bltz-blue-light);
+    --primary-foreground: var(--bltz-black);
+    --secondary: var(--bltz-gold);
+    --secondary-foreground: var(--bltz-black);
+    --muted: var(--bltz-gray-dark);
+    --muted-foreground: var(--bltz-gray);
+    --accent: var(--bltz-gold);
+    --accent-foreground: var(--bltz-black);
+    --destructive: var(--bltz-error);
+    --destructive-foreground: var(--bltz-white);
+    --border: var(--bltz-gray-dark);
+    --input: var(--bltz-gray-dark);
+    --ring: var(--bltz-gold);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  body::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+
+  html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  html::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+}
+
+/* Custom gradient utilities for sports aesthetic */
+@layer utilities {
+  .gradient-blue {
+    background: linear-gradient(135deg, hsl(var(--bltz-blue)) 0%, hsl(var(--bltz-blue-dark)) 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--bltz-gold-light)) 0%, hsl(var(--bltz-gold-dark)) 100%);
+  }
+
+  .gradient-blue-gold {
+    background: linear-gradient(135deg, hsl(var(--bltz-blue)) 0%, hsl(var(--bltz-gold)) 100%);
+  }
+
+  .text-gradient-blue-gold {
+    background: linear-gradient(135deg, hsl(var(--bltz-blue)) 0%, hsl(var(--bltz-gold)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-[hsl(var(--bltz-blue))] hover:bg-[hsl(var(--bltz-blue-dark))] text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  .btn-gold {
+    @apply bg-[hsl(var(--bltz-gold))] hover:bg-[hsl(var(--bltz-gold-dark))] text-[hsl(var(--bltz-black))] font-bold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  /* Hide scrollbar while maintaining scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+
+  /* Custom transparent scrollbar styling */
+  .scrollbar-transparent {
+    scrollbar-width: thin;  /* Firefox */
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;  /* thumb and track colors for Firefox */
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar {
+    width: 8px;  /* Width of scrollbar */
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar-track {
+    background: transparent;  /* Remove track background */
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);  /* Transparent white thumb */
+    border-radius: 4px;  /* Rounded scrollbar */
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);  /* Slightly more visible on hover */
+  }
+}
+
+:root {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
