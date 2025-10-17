@@ -12,6 +12,8 @@ import {
   IconLogout,
   IconMenu2,
   IconX,
+  IconShield,
+  IconMessageCircle,
 } from "@tabler/icons-react";
 
 interface SidebarLink {
@@ -33,6 +35,16 @@ export function AdminSidebar() {
       label: "Users",
       href: "/admin/users",
       icon: <IconUsers className="h-5 w-5 flex-shrink-0" />,
+    },
+    {
+      label: "Messages",
+      href: "/admin/messages",
+      icon: <IconMessageCircle className="h-5 w-5 flex-shrink-0" />,
+    },
+    {
+      label: "Moderation",
+      href: "/admin/moderation",
+      icon: <IconShield className="h-5 w-5 flex-shrink-0" />,
     },
     {
       label: "Analytics",

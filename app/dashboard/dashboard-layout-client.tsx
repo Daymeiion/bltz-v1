@@ -13,6 +13,7 @@ import {
   IconCalendar,
   IconTrophy,
   IconUsers,
+  IconMessageCircle,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -89,6 +90,13 @@ export default function DashboardLayoutClient({
       href: "/dashboard/team",
       icon: (
         <IconUsers className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Messages",
+      href: "/dashboard/messages",
+      icon: (
+        <IconMessageCircle className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {

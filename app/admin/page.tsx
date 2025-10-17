@@ -1,6 +1,7 @@
 import { StatCard } from "@/components/admin/StatCard";
 import { VisitorsChart } from "@/components/admin/VisitorsChart";
 import { UserManagement } from "@/components/admin/UserManagement";
+import { GrowthRateChart } from "@/components/admin/GrowthRateChart";
 
 export const metadata = {
   title: "Admin Dashboard | BLTZ",
@@ -9,9 +10,9 @@ export const metadata = {
 
 export default function AdminDashboardPage() {
   return (
-    <div className="p-6 md:p-8 space-y-6 max-w-[1600px] mx-auto">
+    <div className="p-3 md:p-8 space-y-4 md:space-y-6 max-w-[1600px] mx-auto">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <StatCard
           title="Total Revenue"
           value="$1,250.00"
@@ -36,14 +37,6 @@ export default function AdminDashboardPage() {
           subtitle="Strong user retention"
           description="Engagement exceed targets"
         />
-        <StatCard
-          title="Growth Rate"
-          value="4.5%"
-          trend="+4.5%"
-          trendDirection="up"
-          subtitle="Steady performance increase"
-          description="Meets growth projections"
-        />
       </div>
 
       {/* Visitors Chart */}
@@ -51,6 +44,9 @@ export default function AdminDashboardPage() {
 
       {/* User Management */}
       <UserManagement />
+
+      {/* Growth Rate Analysis */}
+      <GrowthRateChart />
     </div>
   );
 }

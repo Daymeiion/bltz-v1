@@ -12,15 +12,15 @@ export const metadata = {
 
 export default function AdminAnalyticsPage() {
   return (
-    <div className="p-6 md:p-8 space-y-6 max-w-[1600px] mx-auto">
+    <div className="p-3 md:p-8 space-y-4 md:space-y-6 max-w-[1600px] mx-auto">
       {/* Overview Stats */}
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Analytics Overview</h1>
-        <p className="text-sm text-neutral-400 mb-6">
+        <h1 className="text-xl md:text-3xl font-bold text-white mb-2">Analytics Overview</h1>
+        <p className="text-xs md:text-sm text-neutral-400 mb-4 md:mb-6">
           Track platform performance, user engagement, and revenue metrics
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           <StatCard
             title="Total Users"
             value="17,200"
