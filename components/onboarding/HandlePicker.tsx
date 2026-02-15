@@ -15,12 +15,8 @@ export function HandlePicker({
   onConfirm: (handle: string) => void;
 }) {
   const suggested = useMemo(() => normalizeHandle(suggestedFromName) || "my-locker", [suggestedFromName]);
-  const [handle, setHandle] = useState(initialValue || suggested);
+  const [handle, setHandle] = useState(initialValue || "");
   const [status, setStatus] = useState<"idle" | "checking" | "available" | "taken">("idle");
-
-  useEffect(() => {
-    setHandle((prev) => prev || suggested);
-  }, [suggested]);
 
   async function checkAvailability(h: string) {
     setStatus("checking");
@@ -100,7 +96,7 @@ const inputStyle: React.CSSProperties = {
   flex: 1,
   minWidth: 160,
   padding: "12px 12px",
-  borderRadius: 14,
+  borderRadius: 8,
   border: "1px solid rgba(255,255,255,0.10)",
   background: "rgba(255,255,255,0.04)",
   color: "inherit",
@@ -109,7 +105,7 @@ const inputStyle: React.CSSProperties = {
 
 const miniBtn: React.CSSProperties = {
   padding: "10px 12px",
-  borderRadius: 12,
+  borderRadius: 8,
   border: "1px solid rgba(255,255,255,0.12)",
   background: "rgba(255,255,255,0.04)",
   color: "inherit",

@@ -5,7 +5,7 @@ export async function searchSchoolsAutocomplete(
   query: string,
   opts: SchoolSearchOptions = {}
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     limit = 12,
@@ -33,7 +33,7 @@ export async function bestMatchSchool(
   query: string,
   opts: SchoolSearchOptions = {}
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     league = "NCAA",
@@ -61,7 +61,7 @@ export async function matchOrCreateSchoolPending(
   query: string,
   opts: SchoolSearchOptions & { context?: PendingContext } = {}
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     league = "NCAA",

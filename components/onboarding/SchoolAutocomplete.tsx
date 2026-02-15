@@ -78,6 +78,7 @@ export function SchoolAutocomplete({
   const [results, setResults] = useState<SchoolResult[]>([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchError, setSearchError] = useState<string>("");
 
   const activeReq = useRef(0);
 
@@ -93,6 +94,7 @@ export function SchoolAutocomplete({
 
     const reqId = ++activeReq.current;
     setLoading(true);
+    setSearchError("");
 
     const t = setTimeout(async () => {
       try {
@@ -100,9 +102,14 @@ export function SchoolAutocomplete({
           method: "GET",
         });
         if (!res.ok) {
-          const errorText = await res.text();
-          console.error("API error:", res.status, errorText);
-          throw new Error(`Search failed: ${res.status}`);
+          let errorMessage = `Search failed: ${res.status}`;
+          try {
+            const json = await res.json();
+            if (json?.error) errorMessage = json.error;
+          } catch {
+            // Ignore JSON parse errors and keep status-based fallback message.
+          }
+          throw new Error(errorMessage);
         }
         const json = await res.json();
         if (reqId !== activeReq.current) return;
@@ -120,6 +127,8 @@ export function SchoolAutocomplete({
       } catch (error) {
         if (reqId !== activeReq.current) return;
         console.error("Error in school search:", error);
+        const message = error instanceof Error ? error.message : "Search unavailable";
+        setSearchError(message);
         setResults([]);
         setOpen(false);
       } finally {
@@ -133,10 +142,11 @@ export function SchoolAutocomplete({
   const hint = useMemo(() => {
     if (!query.trim()) return "Start typing to search.";
     if (query.trim().length < 2) return "Type at least 2 characters.";
+    if (searchError) return "School search is temporarily unavailable. You can type it manually.";
     if (loading) return "Searching…";
     if (open && results.length === 0) return "No matches. You can still type it manually.";
     return "";
-  }, [query, loading, open, results.length]);
+  }, [query, searchError, loading, open, results.length]);
 
   return (
     <div style={{ position: "relative" }}>
@@ -266,7 +276,7 @@ export function SchoolAutocomplete({
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "12px 12px",
-  borderRadius: 10,
+  borderRadius: 8,
   border: "1px solid rgba(255,255,255,0.10)",
   background: "rgba(255,255,255,0.04)",
   color: "inherit",

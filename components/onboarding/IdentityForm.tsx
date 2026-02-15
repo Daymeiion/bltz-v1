@@ -135,7 +135,7 @@ export function IdentityForm({
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "12px 12px",
-  borderRadius: 10,
+  borderRadius: 8,
   border: "1px solid rgba(255,255,255,0.10)",
   background: "rgba(255,255,255,0.04)",
   color: "inherit",

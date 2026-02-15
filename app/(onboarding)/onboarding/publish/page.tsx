@@ -12,7 +12,7 @@ export default function PublishPage() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <ProgressBar step={5} />
+      <ProgressBar step={6} />
       <h1 style={{ fontSize: 28, margin: "4px 0 10px", fontFamily: "var(--font-urban-shadow)", letterSpacing: "0.05em" }}>Your locker is live</h1>
       <p style={{ opacity: 0.8, marginTop: 0 }}>
         Copy your link and share it everywhere. You can edit anytime.

@@ -1,4 +1,4 @@
-export function ProgressBar({ step, totalSteps = 5 }: { step: number; totalSteps?: number }) {
+export function ProgressBar({ step, totalSteps = 6 }: { step: number; totalSteps?: number }) {
   const percentage = (step / totalSteps) * 100;
 
   return (

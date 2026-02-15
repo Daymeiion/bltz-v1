@@ -21,10 +21,10 @@ export default function HandlePage() {
         <HandlePicker
           initialValue={handle ?? ""}
           suggestedFromName={identity?.fullName ?? ""}
-          onConfirm={(newHandle) => {
+            onConfirm={(newHandle) => {
             setHandle(newHandle);
             // TODO: call /api/locker/update (handle)
-            router.push("/onboarding/setup");
+            router.push("/onboarding/social");
           }}
         />
       </div>

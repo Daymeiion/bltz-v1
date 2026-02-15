@@ -3,7 +3,7 @@
 type BtnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base: React.CSSProperties = {
-  borderRadius: 14,
+  borderRadius: 8,
   padding: "12px 14px",
   fontWeight: 700,
   letterSpacing: 0.3,
@@ -33,12 +33,14 @@ export function PrimaryButton(props: BtnProps) {
 }
 
 export function SecondaryButton(props: BtnProps) {
+  const { style, ...restProps } = props;
   return (
     <button
-      {...props}
+      {...restProps}
       style={{
         ...base,
         background: "rgba(255,255,255,0.04)",
+        ...style,
       }}
     />
   );
